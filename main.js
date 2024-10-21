@@ -14,11 +14,15 @@ let lastScoredPlayer = null;
 let hitSound = document.getElementById('hit-sound');
 let scoreSound = document.getElementById('score-sound');
 
+// Ball Grafik laden
+let ballImage = new Image();
+ballImage.src = 'ball.png'; // Ersetze 'ball.png' durch den Pfad zu deinem Bild
+
 document.addEventListener('keydown', e => key[e.keyCode] = true);
 document.addEventListener('keyup', e => key[e.keyCode] = false);
 
 draw();
-setInterval(loop, 1000 / 60)
+setInterval(loop, 1000 / 60);
 
 function draw() {
     ctx.fillStyle = 'rgb(15, 90, 30)';
@@ -26,7 +30,10 @@ function draw() {
     ctx.fillStyle = 'white';
     ctx.fillRect(10, p1, 10, 80);
     ctx.fillRect(700, p2, 10, 80);
-    ctx.fillRect(ball.x, ball.y, 10, 10);
+    
+    // Zeichne das Ballbild anstelle des Rechtecks
+    ctx.drawImage(ballImage, ball.x, ball.y, 20, 20); // Anpassen der Größe (20, 20) nach Belieben
+
     requestAnimationFrame(draw);
 }
 
@@ -78,7 +85,7 @@ function loop() {
         }
     }
 
-    if(ball.y < 0 || ball.y > 480) {
+    if (ball.y < 0 || ball.y > 480) {
         ball.speedY = -ball.speedY;
     }
 }
