@@ -8,6 +8,8 @@ let ball = {
     speedX: 3,
     speedY: 0
 };
+let scoreP1 = 0;
+let scoreP2 = 0;
 
 document.addEventListener('keydown', e => key[e.keyCode] = true);
 document.addEventListener('keyup', e => key[e.keyCode] = false);
@@ -55,6 +57,10 @@ function loop() {
         if (ball.y > p1 && ball.y < p1 + 80) {
             ball.speedX = -ball.speedX;
             ball.speedY = (ball.y - p1 - 40) * 0.1;
+        } else {
+            scoreP2++;
+            document.getElementById('score-p2').textContent = scoreP2;
+            resetBall();
         }
     }
 
@@ -62,19 +68,23 @@ function loop() {
         if (ball.y > p2 && ball.y < p2 + 80) {
             ball.speedX = -ball.speedX;
             ball.speedY = (ball.y - p2 - 40) * 0.1;
+        } else {
+            scoreP1++;
+            document.getElementById('score-p1').textContent = scoreP1;
+            resetBall();
         }
     }
 
     if(ball.y < 0 || ball.y > 480) {
         ball.speedY = -ball.speedY;
     }
+}
 
-    if (ball.x < 0 || ball.x > 720) {
-        ball = {
-            x: 360,
-            y: 240,
-            speedX: 3,
-            speedY: 0
-        };
-    }
+function resetBall() {
+    ball = {
+        x: 360,
+        y: 240,
+        speedX: 3 * (Math.random() > 0.5 ? 1 : -1),
+        speedY: 0
+    };
 }
