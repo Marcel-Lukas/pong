@@ -5,69 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retro Pong</title>
-
-    <style>
-    
-      * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      }
-
-      body {
-        background-color: rgb(141, 141, 141);
-      }
-
-      main {
-        display: flex;
-        justify-content: center;
-        padding-top: 140px;
-      }
-      canvas {
-        border: solid 6px white;
-      }
-
-      #score-container {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 4px;
-      }
-
-      span {
-        font-size: 28px;
-        font-weight: bold;
-        padding-left: 24px;
-        padding-right: 24px;
-      }
-
-      h1 {
-        font-size: 38px;
-      }
-
-      p {
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .score-box {
-        display: flex;
-        align-items: center;
-      }
-
-      #steuerungs-text {
-        display: flex;
-        justify-content: space-between;
-        span {
-          font-size: 20px;
-        }
-      }
-      
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
 
   <body>
-
     <main>
       <div>
         <div class="center" >
@@ -77,7 +18,7 @@
                 <p>P1:</p>
                 <span id="score-p1">0</span>
               </div>
-              <h1>Retro Pong</h1>
+              <h1 id="retro" >Retro Pong</h1>
               <div class="score-box" >
                 <p>P2:</p>
                 <span id="score-p2">0</span>
@@ -86,7 +27,9 @@
         </div>
 
         <canvas id="ca" width="720" height="480" style="background-color: black;"></canvas>
-        <div id="steuerungs-text"><span>P1 steuert mit W & S</span>
+        <div id="steuerungs-text">
+            <span>P1 steuert mit W & S</span>
+            <div id="btn" ><a href="index.html">Neustart</a></div>
             <span>P2 steuert mit Pfeiltasten</span>
         </div>
         
@@ -95,7 +38,16 @@
 
     <audio id="hit-sound" src="beep.wav"></audio>
     <audio id="score-sound" src="jump.mp3"></audio>
+
     <script src="main.js"></script>
+
+    <script>
+      window.addEventListener('load', () => {
+          const logo = document.querySelector('#retro');
+          logo.classList.add('loaded');
+      });
+    </script>
+
   </body>
 
 </html>
