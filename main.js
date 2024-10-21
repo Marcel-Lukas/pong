@@ -30,12 +30,6 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-// Tasten zahlen:
-// 38 hoch
-// 40 runter 
-// 87 w 
-// 83 s  
-
 function loop() {
     if (key[38]) {
         p2 = Math.max(p2 - 5, 0);
