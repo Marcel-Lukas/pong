@@ -11,6 +11,8 @@ let ball = {
 let scoreP1 = 0;
 let scoreP2 = 0;
 let lastScoredPlayer = null;
+let hitSound = document.getElementById('hit-sound');
+let scoreSound = document.getElementById('score-sound');
 
 document.addEventListener('keydown', e => key[e.keyCode] = true);
 document.addEventListener('keyup', e => key[e.keyCode] = false);
@@ -58,9 +60,11 @@ function loop() {
         if (ball.y > p1 && ball.y < p1 + 80) {
             ball.speedX = -ball.speedX;
             ball.speedY = (ball.y - p1 - 40) * 0.1;
+            hitSound.play();
         } else {
             scoreP2++;
             document.getElementById('score-p2').textContent = scoreP2;
+            scoreSound.play();
             lastScoredPlayer = 2;
             resetBall();
         }
@@ -70,9 +74,11 @@ function loop() {
         if (ball.y > p2 && ball.y < p2 + 80) {
             ball.speedX = -ball.speedX;
             ball.speedY = (ball.y - p2 - 40) * 0.1;
+            hitSound.play();
         } else {
             scoreP1++;
             document.getElementById('score-p1').textContent = scoreP1;
+            scoreSound.play();
             lastScoredPlayer = 1;
             resetBall();
         }
