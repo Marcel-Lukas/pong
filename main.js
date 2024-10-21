@@ -5,7 +5,7 @@ let key = {};
 let ball = {
     x: 360,
     y: 240,
-    speedX: 3,
+    speedX: 5,
     speedY: 0
 };
 let scoreP1 = 0;
@@ -58,7 +58,7 @@ function loop() {
 
     if (ball.x < 20 && ball.speedX < 0) {
         if (ball.y > p1 && ball.y < p1 + 80) {
-            ball.speedX = -ball.speedX;
+            ball.speedX = -ball.speedX * 1.1;
             ball.speedY = (ball.y - p1 - 40) * 0.1;
             hitSound.play();
         } else {
@@ -72,7 +72,7 @@ function loop() {
 
     if (ball.x > 690 && ball.speedX > 0) {
         if (ball.y > p2 && ball.y < p2 + 80) {
-            ball.speedX = -ball.speedX;
+            ball.speedX = -ball.speedX * 1.1;
             ball.speedY = (ball.y - p2 - 40) * 0.1;
             hitSound.play();
         } else {
@@ -93,7 +93,7 @@ function resetBall() {
     ball = {
         x: 360,
         y: 240,
-        speedX: lastScoredPlayer === 1 ? 3 : -3,
+        speedX: lastScoredPlayer === 1 ? 5 : -5,
         speedY: 0
     };
 }

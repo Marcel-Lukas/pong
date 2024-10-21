@@ -53,6 +53,14 @@
         display: flex;
         align-items: center;
       }
+
+      #steuerungs-text {
+        display: flex;
+        justify-content: space-between;
+        span {
+          font-size: 20px;
+        }
+      }
       
     </style>
 
@@ -78,6 +86,10 @@
         </div>
 
         <canvas id="ca" width="720" height="480" style="background-color: black;"></canvas>
+        <div id="steuerungs-text"><span>P1 steuert mit W & S</span>
+            <span>P2 steuert mit Pfeiltasten</span>
+        </div>
+        
       </div>
     </main>
 
