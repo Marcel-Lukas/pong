@@ -21,7 +21,7 @@ draw();
 setInterval(loop, 1000 / 60)
 
 function draw() {
-    ctx.fillStyle = 'black';
+    ctx.fillStyle = 'rgb(15, 90, 30)';
     ctx.fillRect(0, 0, 720, 480);
     ctx.fillStyle = 'white';
     ctx.fillRect(10, p1, 10, 80);
