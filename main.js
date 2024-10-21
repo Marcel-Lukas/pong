@@ -10,6 +10,7 @@ let ball = {
 };
 let scoreP1 = 0;
 let scoreP2 = 0;
+let lastScoredPlayer = null;
 
 document.addEventListener('keydown', e => key[e.keyCode] = true);
 document.addEventListener('keyup', e => key[e.keyCode] = false);
@@ -35,19 +36,19 @@ function draw() {
 
 function loop() {
     if (key[38]) {
-        p2 = p2 - 5;
+        p2 = Math.max(p2 - 5, 0);
     }
 
     if (key[40]) {
-        p2 = p2 + 5;
+        p2 = Math.min(p2 + 5, 400);
     }
 
     if (key[87]) {
-        p1 = p1 - 5;
+        p1 = Math.max(p1 - 5, 0);
     }
 
     if (key[83]) {
-        p1 = p1 + 5;
+        p1 = Math.min(p1 + 5, 400);
     }
 
     ball.x = ball.x + ball.speedX;
@@ -60,6 +61,7 @@ function loop() {
         } else {
             scoreP2++;
             document.getElementById('score-p2').textContent = scoreP2;
+            lastScoredPlayer = 2;
             resetBall();
         }
     }
@@ -71,6 +73,7 @@ function loop() {
         } else {
             scoreP1++;
             document.getElementById('score-p1').textContent = scoreP1;
+            lastScoredPlayer = 1;
             resetBall();
         }
     }
@@ -84,7 +87,7 @@ function resetBall() {
     ball = {
         x: 360,
         y: 240,
-        speedX: 3 * (Math.random() > 0.5 ? 1 : -1),
+        speedX: lastScoredPlayer === 1 ? 3 : -3,
         speedY: 0
     };
 }
